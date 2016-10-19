@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.kundera.mongodb</groupId>
+	<artifactId>KunderaMongoDB</artifactId>
+	<version>1.0.0</version>
+	<name>KunderaMongoDB</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.impetus.client</groupId>
+			<artifactId>kundera-mongo</artifactId>
+			<version>2.9</version>
+		</dependency>
+		<dependency>
+
+
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>kundera.KunderaClient</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

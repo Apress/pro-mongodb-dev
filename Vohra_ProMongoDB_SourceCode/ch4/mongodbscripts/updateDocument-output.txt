@@ -1,0 +1,50 @@
+
+C:\Ruby21-x64\mongodbscripts>ruby updateDocument.rb
+D, [2015-08-05T16:13:06.317760 #2768] DEBUG -- : MONGODB | Adding 127.0.0.1:2701
+7 to the cluster. | runtime: 0.0000ms
+D, [2015-08-05T16:13:06.331761 #2768] DEBUG -- : MONGODB | COMMAND | namespace=a
+dmin.$cmd selector={:ismaster=>1} flags=[] limit=-1 skip=0 project=nil | runtime
+: 13.0010ms
+D, [2015-08-05T16:13:06.335761 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:create=>"mongodb"} flags=[:slave_ok] limit=-1 skip=0 projec
+t=nil | runtime: 2.9998ms
+D, [2015-08-05T16:13:06.337761 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:insert=>"mongodb", :documents=>[{"catalogId"=>1, "journal"=
+>"Oracle Magazine", "publisher"=>"Oracle Publishing", "edition"=>"November Decem
+ber 2013", "title"=>"Engineering as a Service", "author"=>"David A. Kelly", :_id
+=>BSON::ObjectId('55c29882275a... flags=[] limit=-1 skip=0 project=nil | runtime
+: 0.9999ms
+
+D, [2015-08-05T16:13:06.340761 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:update=>"mongodb", :updates=>[{:q=>{:journal=>"Oracle Magaz
+ine"}, :u=>{"$inc"=>{:catalogId=>1}}, :multi=>false, :upsert=>false}], :writeCon
+cern=>{:w=>1}, :ordered=>true} flags=[] limit=-1 skip=0 project=nil | runtime: 1
+.0004ms
+Number of documents updated:
+1
+D, [2015-08-05T16:13:06.377763 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:update=>"mongodb", :updates=>[{:q=>{:publisher=>"Oracle Pub
+lishing"}, :u=>{"$set"=>{:publisher=>"OraclePublishing"}}, :multi=>true, :upsert
+=>false}], :writeConcern=>{:w=>1}, :ordered=>true} flags=[] limit=-1 skip=0 proj
+ect=nil | runtime: 34.0021ms
+Number of documents updated:
+2
+D, [2015-08-05T16:13:06.397764 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:update=>"mongodb", :updates=>[{:q=>{:edition=>"November Dec
+ember 2013"}, :u=>{:edition=>"11-12-2013"}, :multi=>false, :upsert=>false}], :wr
+iteConcern=>{:w=>1}, :ordered=>true} flags=[] limit=-1 skip=0 project=nil | runt
+ime: 16.0010ms
+Number of documents updated:
+1
+D, [2015-08-05T16:13:06.410765 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:findandmodify=>"mongodb", :query=>{:journal=>"Oracle Magazi
+ne"}, :update=>{:journal=>"OracleMagazine"}, :new=>true} flags=[:slave_ok] limit
+=-1 skip=0 project=nil | runtime: 11.0011ms
+Document after being updated:
+{"_id"=>BSON::ObjectId('55c29882275a980ad0000001'), "journal"=>"OracleMagazine"}
+
+D, [2015-08-05T16:13:06.415765 #2768] DEBUG -- : MONGODB | COMMAND | namespace=l
+ocal.$cmd selector={:findandmodify=>"mongodb", :query=>{:edition=>"November Dece
+mber 2013"}, :update=>{"$set"=>{:edition=>"11-12-2013"}}, :new=>false} flags=[:s
+lave_ok] limit=-1 skip=0 project=nil | runtime: 0.9999ms
+Document before being updated:

@@ -1,0 +1,5 @@
+Databases are only created in MongoDB when you actually access them. Calling MongoClient.db(...) gets you a new instance of DB but does not send any commands to the server.
+
+https://jira.mongodb.org/browse/RUBY-795
+
+The same applies to DB.collection(name, opts = {}) method for getting a collection, which does not create a new collection.

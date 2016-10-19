@@ -1,0 +1,84 @@
+require 'mongo'
+include Mongo
+
+
+client =Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'test')
+client=client.use(:local)
+db=client.database
+collection=db.collection("mongodb")
+ 
+
+collection.create
+
+document1={
+  
+  "catalogId" => 1,
+  "journal" => "Oracle Magazine",
+  "publisher" => "Oracle Publishing",
+  "edition" =>  "November December 2013",
+  "title" => "Engineering as a Service",
+  "author" =>  "David A. Kelly"
+}
+
+ 
+  
+
+document2={
+ 
+  "catalogId" => 2,
+  "journal" => "Oracle Magazine",
+  "publisher" => "Oracle Publishing",
+  "edition" =>  "November December 2013",
+  "title" => "Quintessential and Collaborative",
+  "author" =>  "Tom Haunert"
+}
+ 
+  collection.insert_many([document1,document2])
+  
+print "\n"
+ 
+collection = client[:mongodb]
+
+#Update example 1
+
+#result = collection.find(:journal => 'Oracle Magazine').update_one("$inc" => { :catalogId => 1 })
+
+#print "Number of documents updated: "
+#print "\n"
+#print result.n  
+#print "\n"
+
+ 
+#Update example 2
+
+#result = collection.find(:publisher => 'Oracle Publishing').update_many('$set' => { publisher: 'OraclePublishing'})
+
+#print "Number of documents updated: "
+#print "\n"
+#print result.n  
+#print "\n"
+
+#Update example 3
+ 
+#result = collection.find(:edition => 'November December 2013').replace_one(:edition => '11-12-2013')
+#print "Number of documents updated: "
+#print "\n"
+#print result.n  
+#print "\n"
+
+ 
+#Update example 4
+
+#document = collection.find(:journal => 'Oracle Magazine').find_one_and_replace({:journal => 'OracleMagazine'}, :return_document => :after)
+#print "Document after being updated: "
+#print "\n"
+#print document
+#print "\n"
+
+#Update example 5
+ 
+#document = collection.find(:edition => 'November December 2013').find_one_and_update('$set' => {:edition=>'11-12-2013'})
+#print "Document before being updated: "
+#print "\n"
+#print document
+#print "\n"

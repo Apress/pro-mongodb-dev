@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="kundera">
+		<provider>com.impetus.kundera.KunderaPersistence</provider>
+		  <class>kundera.Catalog</class>  
+		  <exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="kundera.nodes" value="localhost" />
+			<property name="kundera.port" value="27017" />
+			<property name="kundera.keyspace" value="local" />
+			<property name="kundera.dialect" value="mongodb" />
+			<property name="kundera.ddl.auto.prepare" value="create" />
+			<property name="kundera.client" value="com.impetus.client.MongoDBClient" />
+			<property name="kundera.cache.provider.class"
+				value="com.impetus.kundera.cache.ehcache.EhCacheProvider" />
+			<property name="kundera.client.lookup.class"
+				value="com.impetus.client.mongodb.MongoDBClientFactory" />
+			<property name="kundera.annotations.scan.package" value="kundera" />
+		<!-- 	<property name="kundera.cache.config.resource" value="/ehcache-test.xml" /> -->
+		</properties>
+ 
+
+
+	</persistence-unit>
+</persistence>

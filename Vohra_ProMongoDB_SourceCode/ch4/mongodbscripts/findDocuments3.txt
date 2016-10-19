@@ -1,0 +1,44 @@
+require 'mongo'
+include Mongo
+
+mongo_connection = MongoClient.new 
+db=mongo_connection.db("local")
+collection=db.create_collection("catalog")
+
+document1={
+  "catalogId" => "catalog1",
+  "journal" => "Oracle Magazine",
+  "publisher" => "Oracle Publishing",
+  "edition" =>  "November December 2013",
+  "title" => "Engineering as a Service",
+  "author" =>  "David A. Kelly"
+}
+ 
+document2={
+  "catalogId" => "catalog2",
+  "journal" => "Oracle Magazine",
+  "publisher" => "Oracle Publishing",
+  "edition" =>  "November December 2013",
+  "title" => "Quintessential and Collaborative",
+  "author" =>  "Tom Haunert"
+}
+
+documentArray=[document1,document2]
+ collection.insert(documentArray)
+
+##collection.find.each { |document| puts document.inspect }
+## same as preceding
+##collection.find({"journal" => "Oracle Magazine"}).each { |document| puts document.inspect }
+
+##collection.find({"journal" => "Oracle Magazine"}, :fields=>['edition','title','author']).each { |document| puts document.inspect}
+
+
+##puts collection.find.to_a
+
+collection.find.each_slice(10) do |slice|
+  puts slice.inspect
+end
+
+ ##print collection.find() does not return a document
+ print "\n"
+ ##print collection.find({"journal" => "Oracle Magazine"})
